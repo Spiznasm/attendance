@@ -1,0 +1,45 @@
+sql command example
+INSERT INTO student_attendance VALUES(999980000000000000,672,NULL,'2017-09-28','08:30:00.000','16:30:00.000',30,'R',NULL,NULL,'Y')
+
+start at 999980000000000001
+
+current student list
+first_name, last_name, student_program_id
+
+'Lydia','Garcia','1048'
+'Jessica ','Swanson','1049'
+'Alexis','Hollman','1050'
+'Rachel','Denhof','1051'
+'Bailey ','Schultze','1052'
+'Shanon','Butterfield','958'
+'Emma','Alfred','1054'
+'Taylor','Dubbeldee','1055'
+'Magaly','Rodriguez-Martinez','1056'
+'Jasmine','Widmer','1060'
+'Samantha','Saffert','1044'
+'Jill','Beranek','1045'
+'Lauren','Bjorngjeld','1046'
+'Allison','Wink','1047'
+'Amanda','Tenney','1025'
+'Dusty','Duffie','1026'
+'Nicole','West','1027'
+'Kirsten','Lacanne','1028'
+'Kelsey Marie','Espeland','1029'
+'Tess','Harper','1030'
+'Kendra ','Kieffer','1031'
+'Jaqueline ','Kelly','1032'
+'Brooklyn','Healey','1005'
+'Kaitlin','Daigle','1006'
+'Dayna','Comnick','1007'
+'Ruth','Ebertowski','1015'
+'Brandi','Wetzel','1016'
+'Macy','Richter','989'
+'Shea','Lachman','991'
+'Jazlin','Honeycutt','992'
+'Rachelle','Johnson','974'
+'Amber','Nusser','978'
+'Roeana','Kearney','979'
+'Abigail','Moore','957'
+'Michelle ','Klemmer','959'
+'Yessica','Galvan','906'
+'Destani','Mans','894'
