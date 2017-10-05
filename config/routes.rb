@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :attendance_records
   root 'students#index'
   
   get '/login', to: 'sessions#new'

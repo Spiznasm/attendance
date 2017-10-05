@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  genesis_id: 
+  date: 2017-10-04
+  time_in: 2017-10-04 18:07:41
+  time_out: 2017-10-04 18:07:41
+  break: 1
+  student: one
+
+two:
+  genesis_id: 
+  date: 2017-10-04
+  time_in: 2017-10-04 18:07:41
+  time_out: 2017-10-04 18:07:41
+  break: 1
+  student: two

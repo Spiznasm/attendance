@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Genesis:</strong>
+  <%= @attendance_record.genesis_id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @attendance_record.date %>
+</p>
+
+<p>
+  <strong>Time in:</strong>
+  <%= @attendance_record.time_in %>
+</p>
+
+<p>
+  <strong>Time out:</strong>
+  <%= @attendance_record.time_out %>
+</p>
+
+<p>
+  <strong>Break:</strong>
+  <%= @attendance_record.break %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @attendance_record.student %>
+</p>
+
+<%= link_to 'Edit', edit_attendance_record_path(@attendance_record) %> |
+<%= link_to 'Back', attendance_records_path %>

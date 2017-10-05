@@ -1,0 +1,47 @@
+<%= form_with(model: attendance_record, local: true) do |form| %>
+  <% if attendance_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(attendance_record.errors.count, "error") %> prohibited this attendance_record from being saved:</h2>
+
+      <ul>
+      <% attendance_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :genesis_id %>
+    <%= form.text_field :genesis_id, id: :attendance_record_genesis_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date, id: :attendance_record_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time_in %>
+    <%= form.time_select :time_in, id: :attendance_record_time_in %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time_out %>
+    <%= form.time_select :time_out, id: :attendance_record_time_out %>
+  </div>
+
+  <div class="field">
+    <%= form.label :break %>
+    <%= form.number_field :break, id: :attendance_record_break %>
+  </div>
+
+  <div class="field">
+    <%= form.label :student_id %>
+    <%= form.text_field :student_id, id: :attendance_record_student_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
