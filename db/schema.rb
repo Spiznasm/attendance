@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171004230741) do
+ActiveRecord::Schema.define(version: 20171005152854) do
 
   create_table "attendance_records", force: :cascade do |t|
-    t.bigint "genesis_id"
     t.date "date"
     t.time "time_in"
     t.time "time_out"
@@ -26,9 +25,9 @@ ActiveRecord::Schema.define(version: 20171004230741) do
 
   create_table "students", force: :cascade do |t|
     t.string "name"
-    t.integer "genesis_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "genesis_id"
   end
 
   create_table "users", force: :cascade do |t|

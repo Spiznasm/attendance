@@ -5,7 +5,6 @@
 <table>
   <thead>
     <tr>
-      <th>Genesis</th>
       <th>Date</th>
       <th>Time in</th>
       <th>Time out</th>
@@ -18,7 +17,6 @@
   <tbody>
     <% @attendance_records.each do |attendance_record| %>
       <tr>
-        <td><%= attendance_record.genesis_id %></td>
         <td><%= attendance_record.date %></td>
         <td><%= attendance_record.time_in %></td>
         <td><%= attendance_record.time_out %></td>

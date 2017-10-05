@@ -28,7 +28,8 @@ class AttendanceRecordsController < ApplicationController
 
     respond_to do |format|
       if @attendance_record.save
-        format.html { redirect_to @attendance_record, notice: 'Attendance record was successfully created.' }
+        format.html { redirect_to students_path}
+        flash[:notice] = "Attendance Record Saved."
         format.json { render :show, status: :created, location: @attendance_record }
       else
         format.html { render :new }
@@ -56,7 +57,7 @@ class AttendanceRecordsController < ApplicationController
   def destroy
     @attendance_record.destroy
     respond_to do |format|
-      format.html { redirect_to attendance_records_url, notice: 'Attendance record was successfully destroyed.' }
+      format.html { redirect_to request.referrer, notice: 'Attendance record was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
