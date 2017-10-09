@@ -19,12 +19,12 @@
 
   <div class="field">
     <%= form.label :time_in %>
-    <%= form.time_select :time_in, :minute_step => 15, :start_hour => 8, :end_hour => 21, :ampm => true, id: :attendance_record_time_in %>
+    <%= form.time_select :time_in, :minute_step => 15, :start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, id: :attendance_record_time_in %>
   </div>
 
   <div class="field">
     <%= form.label :time_out %>
-    <%= form.time_select :time_out, :minute_step => 15,:start_hour => 8, :end_hour => 21, :ampm => true, id: :attendance_record_time_out %>
+    <%= form.time_select :time_out, :minute_step => 15,:start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, id: :attendance_record_time_out, :include_blank => true %>
   </div>
 
   <div class="field">

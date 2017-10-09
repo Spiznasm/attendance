@@ -24,7 +24,7 @@
   <tr>
     <td><%= f.date.strftime("%m/%d/%Y") %></td>
     <td><%= f.time_in.strftime('%I:%M %p') %></td>
-    <td><%= f.time_out.strftime('%I:%M %p') %></td>
+    <td><%= f.time_out.blank? ? "" : f.time_out.strftime('%I:%M %p') %></td>
     <td><%= f.break %></td>
     <td><%= hour_calc f %></td>
     <td><%= link_to 'Edit', edit_attendance_record_path(f) %></td>
