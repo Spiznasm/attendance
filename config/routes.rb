@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
 
+
   resources :students
+  patch '/students', to: 'attendance_records#update'
+  #post '/students', to: 'attendance_records#create'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

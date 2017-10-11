@@ -1,0 +1,51 @@
+<%= form_with(model: attendance_record, local: true) do |form| %>
+  <% if attendance_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(attendance_record.errors.count, "error") %> prohibited this attendance_record from being saved:</h2>
+
+      <ul>
+      <% attendance_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+    <thead>
+      <th>Date</th>
+      <th>Time In</th>
+      <th>Time Out</th>
+      <th>Break</th>
+      <th>Student</th>
+    </thead>
+  </table>
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date, id: :attendance_record_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time_in %>
+    <%= form.time_select :time_in, :minute_step => 15, :start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, id: :attendance_record_time_in %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time_out %>
+    <%= form.time_select :time_out, :minute_step => 15,:start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, id: :attendance_record_time_out, :include_blank => true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :break %>
+    <%= form.number_field :break, id: :attendance_record_break %>
+  </div>
+
+  <div class="field">
+    <%= form.label :student_id %>
+    <%= form.select :student_id, Student.all.pluck(:name, :id) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

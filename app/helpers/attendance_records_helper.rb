@@ -8,4 +8,14 @@ module AttendanceRecordsHelper
     end
   end
   
+  def record_select_dates(date1, date2)
+    selected = []
+    AttendanceRecord.all.each do |record|
+      if record.date >= date1 && record.date <= date2
+        selected.push(record)
+      end
+    end
+    return selected
+  end
+  
 end
