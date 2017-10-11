@@ -20,9 +20,23 @@
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% if student.attendance_records.find_by(date: Time.now).nil? %>
+      <tr>
+        <td><%= link_to 'Add Attendance', new_attendance_record_path %></td>
+      </tr>
+      <% else %>
+      <tr>
+        <td><%= student.attendance_records.find_by(date: Time.now).date %></td>
+        <td><%= student.attendance_records.find_by(date: Time.now).time_in.strftime('%I:%M %p') %></td>
+        <td><%= student.attendance_records.find_by(date: Time.now).time_out.blank? ? "" : f.time_out.strftime('%I:%M %p') %></td>
+        <td><%= student.attendance_records.find_by(date: Time.now).break %></td>
+        <td><%= link_to 'Edit', edit_attendance_record_path(student.attendance_records.find_by(date: Time.now)) %></td>
+      </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
+
 
 <br>
 

@@ -34,7 +34,8 @@
 
   <div class="field">
     <%= form.label :student_id %>
-    <%= form.text_field :student_id, id: :attendance_record_student_id %>
+    <%= form.select :student_id, Student.all.pluck(:name, :id) %>
+    <!--<%= form.text_field :student_id, id: :attendance_record_student_id %>-->
   </div>
 
   <div class="actions">
