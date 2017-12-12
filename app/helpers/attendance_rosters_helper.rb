@@ -1,0 +1,2 @@
+module AttendanceRostersHelper
+end

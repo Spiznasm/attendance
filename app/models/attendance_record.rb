@@ -1,5 +1,6 @@
 class AttendanceRecord < ApplicationRecord
   belongs_to :student
+  belongs_to :attendance_roster
   validates :date, :time_in, :presence => true
   validate :end_time_after_start_time?
 

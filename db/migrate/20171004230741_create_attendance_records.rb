@@ -1,8 +1,6 @@
 class CreateAttendanceRecords < ActiveRecord::Migration[5.1]
   def change
     create_table :attendance_records do |t|
-      t.bigint :genesis_id
-      t.date :date
       t.time :time_in
       t.time :time_out
       t.integer :break
