@@ -6,6 +6,7 @@ class StudentsController < ApplicationController
   def index
     @students = Student.all
     @record = AttendanceRecord.new
+    @date = params[:date] || Date.today
   end
 
   # GET /students/1
