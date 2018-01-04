@@ -1,0 +1,30 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Time In</th>
+      <th>Time Out</th>
+      <th>Break</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+<%= form_tag attendance_records_path(method: :post) do %>
+  <% @empty_attendances.each do |record| %>
+    <%= fields_for 'records[]', record do |r| %>
+    <tr>
+      <% student = Student.find(record.student_id) %>
+      <td><%= student.display_name %></td>
+      <td><%= r.date_select :date, id: :attendance_record_date %></td>
+      <td><%= r.time_select :time_in, :minute_step => 15, :start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, :include_blank => true, id: :attendance_record_time_in %></td>
+      <td><%= r.time_select :time_out, :minute_step => 15,:start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, id: :attendance_record_time_out, :include_blank => true %></td>
+      <td><%= r.number_field :break, :step => 15, id: :attendance_record_break %></td>
+    </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
+  <%= submit_tag 'Submit Attendance' %>
+<% end %>

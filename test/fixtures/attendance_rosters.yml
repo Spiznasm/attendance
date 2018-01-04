@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 
+  student: 
+  attendance_record: 
+
+two:
+  date: 
+  student: 
+  attendance_record: 

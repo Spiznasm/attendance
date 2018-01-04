@@ -1,0 +1,19 @@
+<h1>Student Roster</h1>
+<p>Select the students in your class</p>
+<%= form_tag roll_call_path do %>
+  <table>
+  	<tr>
+  		<th></th>
+  		<th>Name</th>
+  		<th>Profile</th>
+  	</tr>
+  	<% @students.each do |student| %>
+  	<tr>
+  		<td><%= check_box_tag "student_ids[]", student.id %></td>
+  		<td><%= student.display_name %></td>
+  		<td><%= link_to "View", student_path(student) %></td>
+  	</tr>
+  	<% end %>
+  </table>
+  <%= submit_tag "Enter Attendance" %>
+<% end %>
