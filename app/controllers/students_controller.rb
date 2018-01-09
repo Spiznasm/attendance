@@ -6,7 +6,8 @@ class StudentsController < ApplicationController
   def index
     @students = Student.all
     @record = AttendanceRecord.new
-    @date = params[:date] || Date.today
+    @search = AttendanceSearch.new(params[:search_date])
+    @date = @search.search_date
   end
 
   # GET /students/1
