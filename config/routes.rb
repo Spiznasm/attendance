@@ -16,5 +16,7 @@ Rails.application.routes.draw do
   patch '/students', to: 'attendance_records#update'
   #post '/students', to: 'attendance_records#create'
   
+  resources :users
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
