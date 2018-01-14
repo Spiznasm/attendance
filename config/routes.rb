@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
-  
+
   resources :attendance_records
-  root 'students#index'
+  
+  # resources :attendance_records do
+  #   collection do
+  #     get 'roll_call'
+  #   end
+  # end
+
+  get '/roll_call', to: 'attendance_records#roll_call'
+
+  root 'attendance_records#index'
   
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
@@ -13,7 +22,7 @@ Rails.application.routes.draw do
 
 
   resources :students
-  patch '/students', to: 'attendance_records#update'
+  #patch '/students', to: 'attendance_records#update'
   #post '/students', to: 'attendance_records#create'
   
   resources :users

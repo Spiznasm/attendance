@@ -20,35 +20,6 @@
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-      <% if student.attendance_records.find_by(date: Date.today).nil? %>
-      <%= form_for :attendance_record, url: attendance_records_path do |f| %>
-      <tr>
-        <td><%= f.date_select :date, id: :attendance_record_date %></td>
-        <td><%= f.time_select :time_in, :minute_step => 15, :start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, :default => {:hour => 8, :minute => 30}, id: :attendance_record_time_in %></td>
-        <td><%= f.time_select :time_out, :minute_step => 15,:start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, id: :attendance_record_time_out, :include_blank => true %></td>
-        <td><%= f.number_field :break, :step => 15, :value => 30, id: :attendance_record_break %></td>
-        <%= f.hidden_field :student_id, :value => student.id %>
-        <td><%= f.submit %></td>
-      </tr>
-      
-      </ul>
-      </div>
-      <% end %>
-      
-      <% else %>
-      <% record = student.attendance_records.find_by(date: Time.now) %>
-      <%= form_for record do |f| %>
-      <tr>
-        <%= f.hidden_field :attendance_record_id, :value => record.id %>
-        <td><%= record.date %></td>
-        <td><%= f.time_select :time_in, :minute_step => 15, :start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, id: :attendance_record_time_in %></td>
-        <td><%= f.time_select :time_out, :value => record.time_out, :minute_step => 15,:start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, id: :attendance_record_time_out, :include_blank => true %></td>
-        <td><%= f.number_field :break, id: :attendance_record_break, :value => record.break %></td>
-        <td><%= f.submit %></td>
-        <td><%= link_to 'Destroy', record, method: :delete %></td>
-      </tr>
-      <% end %>
-      <% end %>
     <% end %>
   </tbody>
 </table>

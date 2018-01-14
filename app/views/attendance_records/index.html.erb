@@ -1,6 +1,12 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Attendance Records</h1>
+
+<%= form_for :roll_call_date, :url => roll_call_attendance_records_path, html: {method: :get} do |f| %>
+  <%=f.date_select :date %>
+  <%= f.submit %>
+<% end %>
+
+<div id='roll_call_link'><%= link_to 'Take Attendance', roll_call_attendance_records_path %></div><br>
 
 <table>
   <thead>
