@@ -2,7 +2,7 @@
 
 <%= form_for :roll_call_date, url: roll_call_path, html: {method: :get} do |f| %>
 <%=f.date_select :date %>
-<%= f.submit %>
+<%= f.submit "Set Attendance Date"%>
 <% end %>
 
 <table>
