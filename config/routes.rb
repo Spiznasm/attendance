@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :attendance_records
+  resources :schools
   
   # resources :attendance_records do
   #   collection do
