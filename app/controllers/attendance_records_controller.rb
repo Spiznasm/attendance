@@ -64,7 +64,7 @@ class AttendanceRecordsController < ApplicationController
   end
 
   def roll_call
-    @students = Student.all
+    @students = current_user.students
     @record = AttendanceRecord.new
   end
 
