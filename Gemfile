@@ -15,7 +15,7 @@ end
 
 # set production database
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.20'
 end
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
