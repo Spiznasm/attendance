@@ -8,7 +8,10 @@
     <%= f.password_field :password, class: 'form-control' %>
 
     <%= f.label :password_confirmation, "Confirmation" %>
-    <%= f.password_field :password_confirmation, class: 'form-control' %>
+    <%= f.password_field :password_confirmation, class: 'form-control' %><br>
+
+    <%= f.collection_check_boxes(:school_ids, School.all, :id, :name) %>
+
 
     <%= f.submit yield(:button_text), class: "btn btn-primary" %>
   <% end %>

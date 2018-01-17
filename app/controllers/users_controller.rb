@@ -5,10 +5,12 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @schools = School.all
   end
 
   def create
     @user = User.new(user_params)
+    @schools = School.all
     if @user.save
       log_in @user
       flash[:success] = "New User Created"
@@ -24,10 +26,12 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @schools = School.all
   end
 
   def update
     @user = User.find(params[:id])
+    @schools = School.all
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
@@ -49,7 +53,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :password, :password_confirmation)
+      params.require(:user).permit(:name, :password, :password_confirmation, {school_ids: []})
     end
     
     def admin_user

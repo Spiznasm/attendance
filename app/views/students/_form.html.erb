@@ -21,6 +21,15 @@
     <%= form.number_field :genesis_id, id: :student_genesis_id %>
   </div>
 
+  <div class="field">
+    <%= form.label :school %>
+    <%= form.select(:school_id) do %>
+      <% School.all.each do |s| %>
+      <%= content_tag(:option, s.name, value: s.id) %>
+      <% end %>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
