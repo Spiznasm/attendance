@@ -15,7 +15,7 @@
 
   <tbody>
     <% @students.each do |student| %>
-      <tr class= "<%= student.id.to_s %>">
+      <tr id= "student_<%= student.id.to_s %>">
           <td><%= student.name %></td>
               
           <% if student.attendance_records.find_by(date: @date).nil? %>
@@ -27,38 +27,51 @@
         <td><%= f.number_field :break, :step => 15, :value => 30, id: :attendance_record_break %></td>
         <%= f.hidden_field :student_id, :value => student.id %>
         <td><%= f.submit %></td>
-      </tr>
       
-      </ul>
-      </div>
+      
       <% end %>
       
       <% else %>
       <% record = student.attendance_records.find_by(date: @date) %>
       <%= form_for record do |f| %>
       
-        <%= f.hidden_field :attendance_record_id, :value => record.id %>
-        
         <td><%= f.time_select :time_in, :minute_step => 15, :start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, id: :attendance_record_time_in %></td>
         <td><%= f.time_select :time_out, :value => record.time_out, :minute_step => 15,:start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, id: :attendance_record_time_out, :include_blank => true %></td>
         <td><%= f.number_field :break, id: :attendance_record_break, :step => 15, :value => record.break %></td>
-        <td><%= f.submit %></td>
+        <%= hidden_field_tag :scroll_position, id: "student_#{student.id}_scroll" %>
+        <td><%= f.submit 'Update', onlclick: "passScrollPosition(student_#{student.id}_scroll)" %></td>
         <td><%= link_to 'Destroy', record, method: :delete %></td>
-        <td><%= f.submit '4:30 Clock Out', onclick: "fourThirty(#{student.id})",id: :four_thirty %>
+        <td><%= f.submit '4:30 Clock Out', onclick: "fourThirty(student_#{student.id})",id: :four_thirty %></td>
       <% end %>
+    </tr></a>
     <% end %>
   <% end %>
   </tbody>
 </table>
+<%= @scroll_position %>
 
 
 <script type="text/javascript">
-  function fourThirty(className){
-    let formDiv = document.getElementsByClassName(className.toString())[0];
+  function fourThirty(idName){
+    let formDiv = document.getElementById(idName.toString());
     let column = formDiv.getElementsByTagName("td")[2];
     let hour = column.getElementsByTagName('select')[0];
     let minute = column.getElementsByTagName('select')[1];
     hour.value = "16";
     minute.value = "30";
+    passScrollPosition(idName.toString()+"_scroll");
+  };
+
+  function getScrollPosition(){
+    document.documentElement.scrollTop
+  };
+
+  function passScrollPosition(hiddenId){
+    let hiddenField = document.getElementById(hiddenId.toString());
+    hiddenField.value = getScrollPosition;
   }
+
+  document.addEventListener("DOMContentLoaded", function() {
+  window.scrollTo(0,<%= @scroll_position %>)
+  });
 </script>

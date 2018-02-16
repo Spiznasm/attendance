@@ -9,3 +9,9 @@ User.create!(name: "samnixa",
              password: "math2468",
              password_confirmation: "math2468",
              admin: true)
+
+50.times do |n|
+  Student.create!(name: "user_#{n}",
+                  genesis_id: "#{n}",
+                  school_id: 1)
+end
