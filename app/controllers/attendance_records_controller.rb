@@ -7,7 +7,8 @@ class AttendanceRecordsController < ApplicationController
   # GET /attendance_records
   # GET /attendance_records.json
   def index
-    @attendance_records = AttendanceRecord.all
+    @search = AttendanceRecordSearch.new(params[:search])
+    @attendance_records = @search.scope
   end
 
   # GET /attendance_records/1
@@ -30,7 +31,7 @@ class AttendanceRecordsController < ApplicationController
     @attendance_record = AttendanceRecord.new(attendance_record_params)
     respond_to do |format|
       if @attendance_record.save
-        format.html { redirect_to roll_call_path(roll_call_date: pass_date(@attendance_record.date) }
+        format.html { redirect_to roll_call_path(roll_call_date: pass_date(@attendance_record.date)) }
         flash[:notice] = "Attendance Record Saved."
         format.json { render :show, status: :created, location: @attendance_record }
       else
@@ -45,7 +46,7 @@ class AttendanceRecordsController < ApplicationController
   def update
     respond_to do |format|
       if @attendance_record.update(attendance_record_params)
-        format.html { redirect_to roll_call_path(roll_call_date: pass_date(@attendance_record.date), notice: 'Attendance record was successfully updated.' }
+        format.html { redirect_to roll_call_path(roll_call_date: pass_date(@attendance_record.date)), notice: 'Attendance record was successfully updated.' }
         format.json { render :show, status: :ok, location: @attendance_record }
       else
         format.html { redirect_to roll_call_path(roll_call_date: pass_date(@attendance_record.date)), notice: 'Invalid submission' }
@@ -68,6 +69,8 @@ class AttendanceRecordsController < ApplicationController
     @students = current_user.students.order(:name)
     @record = AttendanceRecord.new
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

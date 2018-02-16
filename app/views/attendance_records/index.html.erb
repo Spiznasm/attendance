@@ -4,6 +4,14 @@
 
 <div id='roll_call_link'><%= link_to 'Take Attendance', roll_call_path %></div><br>
 
+<div class="range-query">
+  <%= form_tag attendance_records_path, method: :get do %>
+    <%= text_field_tag 'search[date_from]', @search.date_from %>
+    <%= text_field_tag 'search[date_to]', @search.date_to %>
+    <%= submit_tag 'Search', class: 'btn search-button' %>
+  <% end %>
+</div>
+
 <table>
   <thead>
     <tr>
