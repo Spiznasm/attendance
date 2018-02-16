@@ -38,8 +38,7 @@
         <td><%= f.time_select :time_in, :minute_step => 15, :start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, id: :attendance_record_time_in %></td>
         <td><%= f.time_select :time_out, :value => record.time_out, :minute_step => 15,:start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, id: :attendance_record_time_out, :include_blank => true %></td>
         <td><%= f.number_field :break, id: :attendance_record_break, :step => 15, :value => record.break %></td>
-        <%= hidden_field_tag :scroll_position, id: "student_#{student.id}_scroll" %>
-        <td><%= f.submit 'Update', onlclick: "passScrollPosition(student_#{student.id}_scroll)" %></td>
+        <td><%= f.submit 'Update' %></td>
         <td><%= link_to 'Destroy', record, method: :delete %></td>
         <td><%= f.submit '4:30 Clock Out', onclick: "fourThirty(student_#{student.id})",id: :four_thirty %></td>
       <% end %>
@@ -48,7 +47,7 @@
   <% end %>
   </tbody>
 </table>
-<%= @scroll_position %>
+
 
 
 <script type="text/javascript">
@@ -62,16 +61,5 @@
     passScrollPosition(idName.toString()+"_scroll");
   };
 
-  function getScrollPosition(){
-    document.documentElement.scrollTop
-  };
-
-  function passScrollPosition(hiddenId){
-    let hiddenField = document.getElementById(hiddenId.toString());
-    hiddenField.value = getScrollPosition;
-  }
-
-  document.addEventListener("DOMContentLoaded", function() {
-  window.scrollTo(0,<%= @scroll_position %>)
-  });
+  
 </script>

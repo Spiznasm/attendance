@@ -2,7 +2,7 @@ class AttendanceRecordsController < ApplicationController
   before_action :logged_in_user
   before_action :set_attendance_record, only: [:show, :edit, :update, :destroy]
   before_action :set_date
-  before_action :set_scroll_position
+  
 
   # GET /attendance_records
   # GET /attendance_records.json
@@ -30,7 +30,7 @@ class AttendanceRecordsController < ApplicationController
     @attendance_record = AttendanceRecord.new(attendance_record_params)
     respond_to do |format|
       if @attendance_record.save
-        format.html { redirect_to roll_call_path(roll_call_date: pass_date(@attendance_record.date), anchor: "student_#{@attendance_record.student_id}") }
+        format.html { redirect_to roll_call_path(roll_call_date: pass_date(@attendance_record.date) }
         flash[:notice] = "Attendance Record Saved."
         format.json { render :show, status: :created, location: @attendance_record }
       else
@@ -45,7 +45,7 @@ class AttendanceRecordsController < ApplicationController
   def update
     respond_to do |format|
       if @attendance_record.update(attendance_record_params)
-        format.html { redirect_to roll_call_path(roll_call_date: pass_date(@attendance_record.date), anchor: "student_#{@attendance_record.student_id}"), notice: 'Attendance record was successfully updated.' }
+        format.html { redirect_to roll_call_path(roll_call_date: pass_date(@attendance_record.date), notice: 'Attendance record was successfully updated.' }
         format.json { render :show, status: :ok, location: @attendance_record }
       else
         format.html { redirect_to roll_call_path(roll_call_date: pass_date(@attendance_record.date)), notice: 'Invalid submission' }
@@ -88,14 +88,7 @@ class AttendanceRecordsController < ApplicationController
       end
     end
 
-    def set_scroll_position
-      if params[:scroll_position]
-        @scroll_position = params[:scroll_position]
-      else 
-        @scroll_position = 0
-      end
-    end
-
+    
     def pass_date(date)
       {"date(1i)" => date.year.to_s, "date(2i)" => date.month.to_s, "date(3i)" => date.day.to_s}
     end
