@@ -11,6 +11,8 @@
     <%= submit_tag 'Search', class: 'btn search-button' %>
   <% end %>
 </div>
+<a href="/attendance_records.csv?<%= request.fullpath.split("?")[1]  %>">make csv</a>
+
 
 <table>
   <thead>

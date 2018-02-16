@@ -9,6 +9,11 @@ class AttendanceRecordsController < ApplicationController
   def index
     @search = AttendanceRecordSearch.new(params[:search])
     @attendance_records = @search.scope
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @attendance_records.to_csv }
+    end
   end
 
   # GET /attendance_records/1
@@ -95,4 +100,5 @@ class AttendanceRecordsController < ApplicationController
     def pass_date(date)
       {"date(1i)" => date.year.to_s, "date(2i)" => date.month.to_s, "date(3i)" => date.day.to_s}
     end
+
 end
