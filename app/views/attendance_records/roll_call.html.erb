@@ -19,30 +19,12 @@
           <td><%= student.name %></td>
               
           <% if student.attendance_records.find_by(date: @date).nil? %>
-      <%= form_for :attendance_record, url: attendance_records_path do |f| %>
-      
-        <%= f.hidden_field :date, :value => @date, id: :attendance_record_date %>
-        <td><%= f.time_select :time_in, :minute_step => 15, :start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, :default => {:hour => 8, :minute => 30}, id: :attendance_record_time_in %></td>
-        <td><%= f.time_select :time_out, :minute_step => 15,:start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, id: :attendance_record_time_out, :include_blank => true %></td>
-        <td><%= f.number_field :break, :step => 15, :value => 30, id: :attendance_record_break %></td>
-        <%= f.hidden_field :student_id, :value => student.id %>
-        <td><%= f.submit %></td>
-      
-      
-      <% end %>
+            <%= render :partial => 'new_form', locals: {:student => student} %>
       
       <% else %>
-      <% record = student.attendance_records.find_by(date: @date) %>
-      <%= form_for record do |f| %>
       
-        <td><%= f.time_select :time_in, :minute_step => 15, :start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, id: :attendance_record_time_in %></td>
-        <td><%= f.time_select :time_out, :value => record.time_out, :minute_step => 15,:start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, id: :attendance_record_time_out, :include_blank => true %></td>
-        <td><%= f.number_field :break, id: :attendance_record_break, :step => 15, :value => record.break %></td>
-        <td><%= f.submit 'Update' %></td>
-        <td><%= link_to 'Destroy', record, method: :delete %></td>
-        <td><%= f.submit '4:30 Clock Out', onclick: "fourThirty(student_#{student.id})",id: :four_thirty %></td>
-      <% end %>
-    </tr></a>
+        <%= render :partial => 'update_form', locals: {:student => student} %>
+    </tr>
     <% end %>
   <% end %>
   </tbody>
