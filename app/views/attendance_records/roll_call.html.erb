@@ -1,8 +1,8 @@
 <h1> Attendance for <%= @date.strftime("%A %D") %></h1>
 
 <%= form_for :roll_call_date, url: roll_call_path, html: {method: :get} do |f| %>
-<%=f.date_select :date %>
-<%= f.submit "Set Attendance Date"%>
+  <%=f.date_select :date %>
+  <%= f.submit "Set Attendance Date"%>
 <% end %>
 
 <table>
@@ -16,17 +16,14 @@
   <tbody>
     <% @students.each do |student| %>
       <tr id= "student_<%= student.id.to_s %>">
-          <td><%= student.name %></td>
-              
-          <% if student.attendance_records.find_by(date: @date).nil? %>
-            <%= render :partial => 'new_form', locals: {:student => student} %>
+        <% if student.attendance_records.find_by(date: @date).nil? %>
+          <%= render :partial => 'new_form', locals: {:student => student} %>
       
-      <% else %>
-      
-        <%= render :partial => 'update_form', locals: {:student => student} %>
-    </tr>
+        <% else %>
+          <%= render :partial => 'update_form', locals: {:student => student} %>
+        <% end %>
+      </tr>        
     <% end %>
-  <% end %>
   </tbody>
 </table>
 
@@ -40,7 +37,6 @@
     let minute = column.getElementsByTagName('select')[1];
     hour.value = "16";
     minute.value = "30";
-    passScrollPosition(idName.toString()+"_scroll");
   };
 
   

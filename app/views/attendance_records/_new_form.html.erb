@@ -1,3 +1,4 @@
+<td><%= student.name %></td>
 <%= form_for :attendance_record, url: attendance_records_path do |f| %>      
 	<%= f.hidden_field :date, :value => @date, id: :attendance_record_date %>
 	<td><%= f.time_select :time_in, :minute_step => 15, :start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, :default => {:hour => 8, :minute => 30}, id: :attendance_record_time_in %></td>
