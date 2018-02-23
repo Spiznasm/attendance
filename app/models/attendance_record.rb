@@ -15,7 +15,7 @@ class AttendanceRecord < ApplicationRecord
   def self.to_csv
     CSV.generate do |csv|
       all.each do |record|
-        csv << [record.id.to_s, record.student_id.to_s, record.date.strftime("%Y-%m-%d"), record.time_in ? record.time_in.strftime("%H:%M:00.000") : "", record.time_out ? record.time_out.strftime("%H:%M:00.000") : "", record.break ? record.break.to_s : "", 'R', 'Y']
+        csv << [record.id.to_s, record.student.genesis_id.to_s, nil, record.date.strftime("%Y-%m-%d"), record.time_in ? record.time_in.strftime("%H:%M:00.000") : nil, record.time_out ? record.time_out.strftime("%H:%M:00.000") : nil, record.break ? record.break.to_s : 0, 'R',nil,nil, 'Y']
       end
     end
   end
