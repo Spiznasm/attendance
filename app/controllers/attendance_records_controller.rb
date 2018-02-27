@@ -38,6 +38,7 @@ class AttendanceRecordsController < ApplicationController
       if @attendance_record.save
         format.html { redirect_to roll_call_path(roll_call_date: pass_date(@attendance_record.date)) }
         flash[:notice] = "Attendance Record Saved."
+        format.js
         format.json { render :show, status: :created, location: @attendance_record }
       else
         format.html { render :new }
@@ -52,6 +53,7 @@ class AttendanceRecordsController < ApplicationController
     respond_to do |format|
       if @attendance_record.update(attendance_record_params)
         format.html { redirect_to roll_call_path(roll_call_date: pass_date(@attendance_record.date)), notice: 'Attendance record was successfully updated.' }
+        format.js
         format.json { render :show, status: :ok, location: @attendance_record }
       else
         format.html { redirect_to roll_call_path(roll_call_date: pass_date(@attendance_record.date)), notice: 'Invalid submission' }

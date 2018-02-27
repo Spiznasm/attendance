@@ -1,12 +1,17 @@
 <td><%= student.name %></td>
-<% record = student.attendance_records.find_by(date: @date) %>
-<%= form_for record do |f| %>
+
+<%= form_for record, html: {method: :put}, remote: true do |f| %>
       
-	<td><%= f.time_select :time_in, :minute_step => 15, :start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, id: :attendance_record_time_in %></td>
+	<td><%= f.time_select :time_in, :value => record.time_in, :minute_step => 15, :start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, id: :attendance_record_time_in %></td>
 	<td><%= f.time_select :time_out, :value => record.time_out, :minute_step => 15,:start_hour => 8, :end_hour => 21, :ampm => true, :ignore_date => true, id: :attendance_record_time_out, :include_blank => true %></td>
 	<td><%= f.number_field :break, id: :attendance_record_break, :step => 15, :value => record.break %></td>
 	<td><%= f.submit 'Update' %></td>
-	<td><%= link_to 'Destroy', record, method: :delete %></td>
 	<td><%= f.submit '4:30 Clock Out', onclick: "fourThirty('student_#{student.id}')",id: :four_thirty %></td>
+	<td><%= link_to 'Destroy', record, method: :delete %></td>
+	<td class='update_note' style="display: none; color: blue">Reload to update again</td>
 <% end %>
+
+<script>
+
+</script>
 

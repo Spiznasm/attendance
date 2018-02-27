@@ -20,7 +20,8 @@
           <%= render :partial => 'new_form', locals: {:student => student} %>
       
         <% else %>
-          <%= render :partial => 'update_form', locals: {:student => student} %>
+          <% record = student.attendance_records.find_by(date: @date) %>
+          <%= render :partial => 'update_form', locals: {:student => student, :record => record} %>
         <% end %>
       </tr>        
     <% end %>

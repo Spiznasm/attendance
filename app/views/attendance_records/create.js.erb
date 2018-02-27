@@ -1,0 +1,1 @@
+document.getElementById('student_<%= @attendance_record.student_id %>').innerHTML = '<%= j render :partial => "update_form", locals: {:student => @attendance_record.student, :record => @attendance_record} %>';
