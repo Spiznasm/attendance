@@ -1,3 +1,0 @@
-var div = document.getElementById('student_<%= @attendance_record.student_id %>')
-div.innerHTML = '<%= j render :partial => "update_form", locals: {:student => @attendance_record.student, :record => @attendance_record} %>';
-div.getElementsByClassName('update_note')[0].style.display = 'block'
