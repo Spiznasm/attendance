@@ -12,7 +12,7 @@ class AttendanceRecordsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { send_data @attendance_records.to_csv }
+      format.csv { send_data @attendance_records.to_csv, filename: 'export.txt' }
     end
   end
 
