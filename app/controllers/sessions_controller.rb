@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:session][:name])
     if user && user.authenticate(params[:session][:password])
       log_in user
-      redirect_to students_url
+      redirect_to roll_call_url
     else
       flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
